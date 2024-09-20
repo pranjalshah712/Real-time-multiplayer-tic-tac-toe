@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <script src="https://cdn.socket.io/4.3.2/socket.io.min.js"></script>
+
+</head>
+<body style="width:50%; margin:auto; border: 2px solid black;">
+    <form method="post" action="/" onsubmit="return validateForm()" style="margin:10px;">
+        <h3 style="margin-top:10px;">Enter chat room</h3>
+        <div class="form-group">
+            <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="name" placeholder="name" value="{{username}}">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" id="code" placeholder="room-code"  name="room_code" value="{{code}}">
+            {% if error %}
+                <span id="room_code_error" style="color:red;">Please Enter a RoomCode!</span>
+            {% endif %}
+            {% if error_max %}
+                <span id="error_max" style="color:red;">Already Have Two Users!</span>
+            {% endif %}
+            <button type="submit" class="btn btn-primary" style="margin-top:10px;" name="join">join a room</button>
+        </div>
+        <div class="form-check">
+            <button type="submit" class="btn btn-primary" name="create" >create a room</button>
+        </div>
+        <span id="name_error" style="color:red;"></span>
+    </form>
+<script src="{{ url_for('static', filename = 'js/game.js')}}"></script>
+<script>
+setTimeout(function(){
+    var roomCodeError = document.getElementById('room_code_error');
+    var errorMax = document.getElementById('error_max');
+
+    if (roomCodeError) {
+        roomCodeError.style.display = 'none';
+    }
+
+    if (errorMax) {
+        errorMax.style.display = 'none';
+    }
+}, 1500);
+
+</script>
+</body>
+</html>

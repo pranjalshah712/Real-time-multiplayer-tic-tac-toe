@@ -1,0 +1,5 @@
+flask==3.0.3
+flask_socketio==5.3.6
+flask_restful==0.3.10
+requests==2.32.3
+redis==5.0.6

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/game.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&family=Roboto+Serif&display=swap" rel="stylesheet">
+    <script src="https://cdn.socket.io/4.3.2/socket.io.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div id="title" style="margin-left:575px;">
+        <h2>Tic Tac Toe: {{username}}</h2>
+        <h2>Room-Code: {{room_code}}</h2>
+    </div>
+    <div id="board">
+        <div class="square" id="square1" onclick="handleClick(1,'{{username}}')"></div>
+        <div class="square" id="square2" onclick="handleClick(2,'{{username}}')"></div>
+        <div class="square" id="square3" onclick="handleClick(3,'{{username}}')"></div>
+        <div class="square" id="square4" onclick="handleClick(4,'{{username}}')"></div>
+        <div class="square" id="square5" onclick="handleClick(5,'{{username}}')"></div>
+        <div class="square" id="square6" onclick="handleClick(6,'{{username}}')"></div>
+        <div class="square" id="square7" onclick="handleClick(7,'{{username}}')"></div>
+        <div class="square" id="square8" onclick="handleClick(8,'{{username}}')"></div>
+        <div class="square" id="square9" onclick="handleClick(9,'{{username}}')"></div>
+    </div>
+    <input id="player" name="player" value="{{player}}" style="display:None;">
+    <input id="player_name" name="player_name" value="{{username}}" style="display:None;">
+    <div id="endGame">
+        <input type="button" value="Restart" id="restartButton" onclick="restartButton()"/>
+    </div>
+    <h2 id="winner" style="color:green; display:none; margin-left:500px;"></h2>
+    <h2 id="loser" style="color:green; display:none; margin-left:500px;"></h2>
+    <h2 id="end" style="color:green; display:none; margin-left:570px;"></h2>
+
+    <script src="{{ url_for('static', filename = 'js/game.js')}}"></script>
+</body>
+</html>
